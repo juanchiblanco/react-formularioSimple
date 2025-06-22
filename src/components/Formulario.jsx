@@ -4,25 +4,31 @@ import Form from "react-bootstrap/Form";
 const Formulario = () => {
   return (
     <section className="row justify-content-center mt-5">
-      <div className="bg-light shadow p-3 shadow rounded">
+      <div className="bg-light shadow p-3 shadow rounded w-75">
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+          <h5 className="text-center lead border border-dark py-3 rounded">Ingresa tus datos</h5>
+          <Form.Group className="mb-3" controlId="nombre">
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control type="name" placeholder="Ej: Juan" required />
           </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+          <Form.Group className="mb-3" controlId="apellido">
+            <Form.Label>Apellido</Form.Label>
+            <Form.Control type="name" placeholder="Ej: Perez" required />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+          <Form.Group className="mb-3" controlId="dni">
+            <Form.Label>DNI</Form.Label>
+            <Form.Control type="number" placeholder="Ej: 41256987" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Correo electrónico</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Ej: Juanperez@mail.com"
+              required
+            />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            Enviar
           </Button>
         </Form>
       </div>
