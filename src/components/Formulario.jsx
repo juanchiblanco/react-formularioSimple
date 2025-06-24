@@ -35,7 +35,7 @@ const Formulario = () => {
                 pattern: {
                   value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
                   message:
-                    "El nombre debe contener caracteres alfabeticos, mayusculas o minusculas",
+                    "El nombre debe contener unicamente caracteres alfabeticos, mayusculas o minusculas",
                 },
               })}
               maxLength={60}
@@ -50,19 +50,19 @@ const Formulario = () => {
               type="name"
               placeholder="Ej: Perez"
               {...register("inputApellido", {
-                required: "El apelido es un dato obligatorio",
+                required: "El apellido es un dato obligatorio",
                 minLength: {
                   value: 3,
-                  message: "El apelido debe tener 3 caracteres como minimo",
+                  message: "El apellido debe tener 3 caracteres como minimo",
                 },
                 maxLength: {
                   value: 50,
-                  message: "El apelido debe tener 50 caracteres como minimo",
+                  message: "El apellido debe tener 50 caracteres como minimo",
                 },
                 pattern: {
                   value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/,
                   message:
-                    "El apellido debe contener caracteres alfabeticos, mayusculas o minusculas",
+                    "El apellido debe contener unicamente caracteres alfabeticos, mayusculas o minusculas",
                 },
               })}
               maxLength={60}
@@ -73,19 +73,63 @@ const Formulario = () => {
           </Form.Text>
           <Form.Group className="mb-3" controlId="dni">
             <Form.Label>DNI</Form.Label>
-            <Form.Control type="number" placeholder="Ej: 41256987" required />
+            <Form.Control
+              type="number"
+              placeholder="Ej: 41256987"
+              {...register("inputDni", {
+                required: "El DNI es un dato obligatorio",
+                minLength: {
+                  value: 7,
+                  message: "El DNI debe tener 7 caracteres como minimo",
+                },
+                maxLength: {
+                  value: 8,
+                  message: "El DNI debe tener 8 caracteres como minimo",
+                },
+                pattern: {
+                  value: /^\d{7,8}$/,
+                  message:
+                    "El DNI debe contener unicamente caracteres numericos y estar escrito sin puntos",
+                },
+              })}
+              maxLength={15}
+            />
           </Form.Group>
+          <Form.Text className="text-danger">
+            {errors.inputDni?.message}
+          </Form.Text>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Correo electrónico</Form.Label>
             <Form.Control
               type="email"
               placeholder="Ej: Juanperez@mail.com"
-              required
+              {...register("inputEmail", {
+                required: "El correo electrónico es un dato obligatorio",
+                minLength: {
+                  value: 3,
+                  message: "El correo electrónico debe tener 3 caracteres como minimo",
+                },
+                maxLength: {
+                  value: 50,
+                  message: "El correo electrónico debe tener 50 caracteres como minimo",
+                },
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message:
+                    "Debes ingresar un correo electrónico válido",
+                },
+              })}
+              maxLength={60}
             />
           </Form.Group>
+          <Form.Text className="text-danger">
+            {errors.inputEmail?.message}
+          </Form.Text>
+          <div className="my-3">
           <Button variant="primary" type="submit">
             Enviar
           </Button>
+          </div>
         </Form>
       </div>
     </section>
