@@ -1,11 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 const Formulario = () => {
-
-  const [datos, setDatos] = useState ([]);
 
   const {
     register,
@@ -14,15 +11,10 @@ const Formulario = () => {
     formState: { errors },
   } = useForm();
 
-  const datosUsuario = (data) => {
-    setDatos([...datos, data.inputNombre,data.inputApellido,data.inputDni,data.inputEmail]);
-    reset();
-  };
-
   return (
     <section className="row justify-content-center mt-5">
       <div className="bg-light shadow p-3 shadow rounded w-75">
-        <Form onSubmit={handleSubmit(datosUsuario)}>
+        <Form onSubmit={handleSubmit()}>
           <h5 className="text-center lead border border-dark py-3 rounded">
             Ingresa tus datos
           </h5>
