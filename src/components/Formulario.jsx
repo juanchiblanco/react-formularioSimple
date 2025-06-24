@@ -7,7 +7,6 @@ const Formulario = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
