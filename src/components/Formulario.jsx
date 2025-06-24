@@ -29,7 +29,7 @@ const Formulario = () => {
           <Form.Group className="mb-3" controlId="nombre">
             <Form.Label>Nombre</Form.Label>
             <Form.Control
-              type="name"
+              type="text"
               placeholder="Ej: Juan"
               {...register("inputNombre", {
                 required: "El nombre es un dato obligatorio",
@@ -56,7 +56,7 @@ const Formulario = () => {
           <Form.Group className="mb-3" controlId="apellido">
             <Form.Label>Apellido</Form.Label>
             <Form.Control
-              type="name"
+              type="text"
               placeholder="Ej: Perez"
               {...register("inputApellido", {
                 required: "El apellido es un dato obligatorio",
