@@ -1,19 +1,28 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Formulario = () => {
-
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const resetForm = () => {
+    reset();
+    Swal.fire({
+      title: "Datos ingresados correctamente!",
+      icon: "success",
+    });
+  };
 
   return (
     <section className="row justify-content-center mt-5">
       <div className="bg-light shadow p-3 shadow rounded w-75">
-        <Form onSubmit={handleSubmit()}>
+        <Form onSubmit={handleSubmit(resetForm)}>
           <h5 className="text-center lead border border-dark py-3 rounded">
             Ingresa tus datos
           </h5>
@@ -107,16 +116,17 @@ const Formulario = () => {
                 required: "El correo electrónico es un dato obligatorio",
                 minLength: {
                   value: 3,
-                  message: "El correo electrónico debe tener 3 caracteres como minimo",
+                  message:
+                    "El correo electrónico debe tener 3 caracteres como minimo",
                 },
                 maxLength: {
                   value: 50,
-                  message: "El correo electrónico debe tener 50 caracteres como minimo",
+                  message:
+                    "El correo electrónico debe tener 50 caracteres como minimo",
                 },
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message:
-                    "Debes ingresar un correo electrónico válido",
+                  message: "Debes ingresar un correo electrónico válido",
                 },
               })}
               maxLength={60}
@@ -126,9 +136,9 @@ const Formulario = () => {
             {errors.inputEmail?.message}
           </Form.Text>
           <div className="my-3">
-          <Button variant="primary" type="submit">
-            Enviar
-          </Button>
+            <Button variant="primary" type="submit">
+              Enviar
+            </Button>
           </div>
         </Form>
       </div>
